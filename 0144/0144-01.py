@@ -1,14 +1,16 @@
 class Solution:
-    def preorderTraversal(self, root: TreeNode) -> List[int]:
-        ret = []
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        ans = []
         
-        def preorder(r):
-            if r == None:
+        def preorder(node):
+            if not node:
                 return
             
-            ret.append(r.val)
-            preorder(r.left)    
-            preorder(r.right)
+            ans.append(node.val)
+            
+            preorder(node.left)
+            preorder(node.right)
+            return
             
         preorder(root)
-        return ret;
+        return ans
