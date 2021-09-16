@@ -1,10 +1,10 @@
 class Solution:
-    def containsDuplicate(self, nums) -> bool:
+    def containsDuplicate(self, nums: List[int]) -> bool:
         m = {}
         for n in nums:
-            v = m.get(n, 0)
-            if v >= 1:
+            if n in m:
                 return True
-            m[n] = 1
             
+            m[n] = 1
+        
         return False
