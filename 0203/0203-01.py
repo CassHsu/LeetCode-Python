@@ -1,6 +1,6 @@
 class Solution:
     def removeElements(self, head: ListNode, val: int) -> ListNode:
-				dummy = ListNode()
+	dummy = ListNode()
         dummy.next = head
         prev = dummy
         curr = dummy.next
