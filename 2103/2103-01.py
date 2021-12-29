@@ -6,9 +6,12 @@ class Solution:
              '6': [], '7': [], '8': [], '9': []}
         
         for i in range(1, len(rings), 2):
-            m[rings[i]].append(rings[i-1])
+            m[rings[i]].append(rings[i-1]
         
         for rod in m.values():
+            if len(rod) < 3:
+                continue
+            
             r = False
             g = False
             b = False
