@@ -13,11 +13,12 @@ class Solution:
         
         
         def is_win(rows, t):
-            if rows[0][0] == t and rows[1][1] == t and rows[2][2] == t:
-                return True
-            
-            if rows[0][2] == t and rows[1][1] == t and rows[2][0] == t:
-                return True
+            if rows[1][1] == t:
+                if rows[0][0] == t and rows[2][2] == t:
+                    return True
+
+                if rows[0][2] == t and rows[2][0] == t:
+                    return True
             
             for i in range(3):
                 if rows[i][0] == t and rows[i][1] == t and rows[i][2] == t:
@@ -32,14 +33,16 @@ class Solution:
             return "Pending"
         
         board = init()
-        turn = 'A'
+        a = 'A'
+        b = 'B'
+        turn = a
         for i, move in enumerate(moves):
             board[move[0]][move[1]] = turn
             
             if is_win(board, turn):
                 return turn
             
-            turn = 'B' if turn == 'A' else 'A'
+            turn = b if turn == a else a
         
         if is_draw(board):
             return "Draw"
