@@ -1,27 +1,30 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        lenS1 = len(s1)
-        lenS2 = len(s2)
+        def match(c1, c2):
+            for i in range(26):
+                if c1[i] != c2[i]:
+                    return False
+            return True
         
-        if (lenS1 > lenS2):
+        len_s1 = len(s1)
+        len_s2 = len(s2)
+        
+        if len_s1 > len_s2:
             return False
-    
-        countS1 = [0 for _ in range(26)]
-        for i in range(lenS1):
-            countS1[ord(s1[i]) - ord('a')] += 1
+        
+        counts = [0 for _ in range(26)]
+        
+        a = ord('a')
+        for s in s1:
+            counts[ord(s) - a] += 1
             
-        for i in range(lenS2 - lenS1 + 1):
-            countS2 = [0 for _ in range(26)]
-            for j in range(lenS1):
-                countS2[ord(s2[i + j]) - ord('a')] += 1
+        for i in range(len_s2 - len_s1 + 1):
+            compare = [0 for _ in range(26)]
+            
+            for j in range(len_s1):
+                compare[ord(s2[i + j]) - a] += 1
                 
-            if self.match(countS1, countS2):
+            if match(counts, compare):
                 return True
-    
+        
         return False
-    
-    def match(self, c1, c2):
-        for i in range(26):
-            if c1[i] != c2[i]:
-                return False
-        return True
