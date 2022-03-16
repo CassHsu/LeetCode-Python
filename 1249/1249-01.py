@@ -1,21 +1,21 @@
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         stack = []
-        res = []
+        invalids = []
         
         for i, c in enumerate(s):
             if c == '(':
                 stack.append(i)
             elif c == ')':
                 if len(stack) == 0:
-                    res.append(i)
+                    invalids.append(i)
                 else:
-                    stack.pop(-1)
-                    
+                    stack.pop()
+        
         count = 0
-        for i in res + stack:
-            idx = i - count
-            s = s[:idx] + s[idx + 1:]
+        for t in invalids + stack:
+            target = t - count
+            s = s[:target] + s[target + 1:]
             count += 1
             
         return s
