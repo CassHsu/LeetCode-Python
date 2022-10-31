@@ -7,7 +7,7 @@ class Solution:
         
         pn = []
         for n in nums:
-            if m[n] > 0 and m[-n] >0:
+            if n > 0 and m[-n] > 0:
                 pn.append(n)
         
         return max(pn) if len(pn) > 0 else -1
