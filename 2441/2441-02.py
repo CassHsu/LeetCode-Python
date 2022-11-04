@@ -1,13 +1,12 @@
 class Solution:
     def findMaxK(self, nums: List[int]) -> int:
+        res = -1
         m = defaultdict(int)
         
         for n in nums:
             m[n] += 1
+
+            if m[-n]:
+                res = max(res, abs(n))
         
-        mx = -1
-        for n in nums:
-            if n > 0 and m[-n] > 0 and n > mx:
-                mx = n
-        
-        return mx
+        return res
